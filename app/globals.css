@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Contact Form Theme Colors for Light Mode */
+    --background: 30 33% 98%;     /* Warm Parchment #FAF7F4 */
+    --foreground: 25 30% 25%;     /* Warm Brown Text #5C4D45 */
+    --card: 30 25% 96%;           /* Soft Cream #F5F0EA */
+    --card-foreground: 25 30% 25%;
+    
+    /* Primary Colors */
+    --primary: 25 40% 35%;        /* Rich Brown #8B6B5D */
+    --primary-foreground: 30 33% 98%;
+    --secondary: 15 25% 45%;      /* Muted Terra Cotta #8D6E67 */
+    --secondary-foreground: 30 33% 98%;
+    
+    /* Accent Colors */
+    --accent: 20 30% 60%;         /* Soft Terra Cotta #B89186 */
+    --accent-foreground: 25 30% 25%;
+    --muted: 30 20% 90%;          /* Light Cream #E9E2DC */
+    --muted-foreground: 25 25% 40%;
+    
+    /* UI Elements */
+    --border: 25 30% 85%;         /* Soft Border #D9CFC8 */
+    --input: 30 25% 96%;
+    --ring: 25 40% 35%;
+    
+    --radius: 0.5rem;
+    --cursor-color: hsl(25 40% 35%);     /* Light mode cursor */
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 186 100% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 285 100% 85%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 186 100% 50%;
+    --cursor-color: hsl(186 100% 50%);   /* Updated dark mode cursor */
+  }
+
+  /* Base font styles */
+  h1, h2, h3 {
+    @apply font-primary;
+  }
+
+  body {
+    @apply font-secondary;
+  }
+}
+
+@layer components {
+  .glass-morphism {
+    @apply backdrop-blur-xl border border-white/10;
+  }
+
+  /* Contact Form Theme Styles */
+  .light {
+    /* Font Settings */
+    --font-primary: var(--font-cinzel);
+    --font-secondary: var(--font-space-mono);
+  }
+
+  /* Glass Morphism */
+  .light .glass-morphism {
+    @apply bg-[#FAF7F4]/90 border-[#8B6B5D]/15 shadow-[0_4px_12px_rgba(139,107,93,0.15)];
+  }
+
+  /* Input Fields */
+  .light .input, .light .textarea {
+    @apply bg-[#F5F0EA] border-[#D9CFC8] focus:border-[#8B6B5D] 
+           focus:ring-[#8B6B5D]/20 placeholder:text-[#8D6E67]/60;
+  }
+
+  /* Buttons */
+  .light .coc-button {
+    @apply bg-gradient-to-r from-[#8B6B5D] to-[#B89186] text-[#FAF7F4] 
+           shadow-md transition-all duration-300 
+           hover:from-[#B89186] hover:to-[#8B6B5D] hover:shadow-lg;
+  }
+
+  /* Cards */
+  .light .coc-card {
+    @apply border-[#8B6B5D]/20 bg-[#F5F0EA] shadow-md 
+           transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  /* Text Effects */
+  .light .text-glow {
+    @apply text-[#8B6B5D] drop-shadow-[1px_1px_2px_rgba(139,107,93,0.2)];
+  }
+
+  /* Headings */
+  .light h1, .light h2, .light h3 {
+    @apply text-[#5C4D45] tracking-wider;
+  }
+}
+
+@layer utilities {
+  /* Animations */
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* CoC Specific Utilities */
+  .coc-button {
+    @apply bg-gradient-to-r from-[#C4922E] to-[#A63A1F] text-[#F7F6F1] 
+           shadow-md transition-all duration-300 hover:from-[#A63A1F] hover:to-[#C4922E] 
+           hover:shadow-lg;
+  }
+
+  .coc-card {
+    @apply border-[#8B4513]/20 bg-[#F0EBE0] shadow-md transition-all duration-300
+           hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .coc-grid {
+    @apply opacity-5;
+    background-image: 
+      linear-gradient(rgba(139, 69, 19, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 69, 19, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+}
+
+/* Scrollbar */
+.light ::-webkit-scrollbar-track {
+  @apply bg-[#F5F0EA];
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    hsl(25 40% 35%),
+    hsl(20 30% 60%)
+  );
+  border-radius: 4px;
+}
+
+/* Selection */
+.light ::selection {
+  @apply bg-[#8B6B5D] text-[#FAF7F4];
+}
+
+/* Grid Background */
+.light .cyber-grid {
+  @apply opacity-5;
+  background-image: 
+    linear-gradient(rgba(139, 107, 93, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 107, 93, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
